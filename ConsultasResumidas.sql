@@ -190,3 +190,11 @@ GROUP by pr.Descripcion, ca. Nombre, pr.Costo
 
 -- Para cada producto, listar el nombre, el texto 'Pagados'  y la cantidad de pedidos pagados. Anexar otro listado con nombre, el texto 'No pagados' y cantidad de pedidos no pagados.
 
+SELECT 
+    pr.ID,
+    pr.Descripcion,
+    COUNT(pe.Pagado) Pagados
+from Productos pr
+INNER JOIN Pedidos pe on pr.ID=pe.IDProducto
+WHERE pe.Pagado=1
+GROUP by pe.Pagado, pr.Descripcion, pr.ID
